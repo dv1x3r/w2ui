@@ -1,4 +1,4 @@
-/* w2ui 2.0.x (nightly) (9/4/2024, 10:49:25 AM) (c) http://w2ui.com, vitmalina@gmail.com */
+/* w2ui 2.0.x (nightly) (9/5/2024, 12:16:21 AM) (c) http://w2ui.com, vitmalina@gmail.com */
 /**
  * Part of w2ui 2.0 library
  *  - Dependencies: w2utils
@@ -14185,12 +14185,12 @@ class w2grid extends w2base {
                     processError(resp ?? {})
                     return
                 }
-                self.unlock()
                 resp.json()
                     .catch(processError)
                     .then(data => {
                         this.requestComplete(data, action, callBack, resolve, reject)
                     })
+                    .finally(() => self.unlock())
             })
         if (action == 'load') {
             // event after
